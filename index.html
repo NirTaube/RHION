@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Candlestick Chart Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .chart-container {
+      width: 400px;
+      height: 400px;
+      margin: 20px;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <canvas id="chart1"></canvas>
+  </div>
+  <div class="chart-container">
+    <canvas id="chart2"></canvas>
+  </div>
+  <div class="chart-container">
+    <canvas id="chart3"></canvas>
+  </div>
+
+  <script>
+    // JavaScript code goes here (including the modified code we discussed earlier)
+    // ...
+
+    // Call the fetchData function for each symbol
+    const symbols = ['IBM', 'AAPL', 'GOOGL'];
+    readAPIKeyFromFile(apiKey => {
+      symbols.forEach((symbol, index) => {
+        const chartId = `chart${index + 1}`;
+        const canvas = document.getElementById(chartId);
+
+        fetchData(symbol, apiKey);
+        canvas.id = chartId;
+        canvas.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
